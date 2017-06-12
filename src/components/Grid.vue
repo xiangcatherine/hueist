@@ -1,29 +1,38 @@
 <template>
-  <div class="grid">
-    <template v-for="row in colorGrid">
+  <span>{{newValue}}</span>
+<!--   <form class="grid">
+    <template v-for="row in newValue">
       <div class="grid-row">
         <template v-for="color in row">
-    	    <div class="grid-cell" :style="{background: color}"></div>
+    	    <input class="grid-cell" :style="{background: color}"></input>
    	    </template>
  	    </div>
     </template>
-  </div>
+  </form> -->
 </template>
 
 <script>
   export default {
-    data () {
+    name: 'grid',
+    props: ['newValue'],
+    data: function () {
       return {
-        colorGrid: [
+        // paletteName: this.newValue,
+        'neon': [
+          ['blue', 'red', 'blue'],
+          ['red', 'blue', 'red'],
+          ['blue', 'red', 'blue']
+        ],
+        'norm': [
           ['#ddd', '#ccc', '#ddd'],
           ['#ccc', '#ddd', '#ccc'],
           ['#ddd', '#ccc', '#ddd']
+        ],
+        'muted': [
+          ['pink', 'yellow', 'pink'],
+          ['yellow', 'pink', 'yellow'],
+          ['pink', 'yellow', 'pink']
         ]
-      }
-    },
-    methods: {
-      changeGrid: function () {
-        console.log('in Grid change grid!')
       }
     }
   }
