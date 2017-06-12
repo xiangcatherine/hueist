@@ -1,9 +1,20 @@
 <template>
-  <div>
+  <form :value="chosenColorId">
     <h1>how are you?</h1>
-    <app-grid v-bind:new-value="newValue"></app-grid>
-    <app-toggle @radioToggled="changeGrid"></app-toggle>
-  </div>
+
+    <app-grid
+      :hue-type="hueType"
+      @colorId="chooseColor">
+    </app-grid>
+
+    <app-toggle
+      @radioToggled="toggleGrid">
+    </app-toggle>
+
+    <template v-if="chosenColorId">
+      <button type="submit">Submit</button>
+    </template>
+  </form>
 </template>
 
 <script>
@@ -14,7 +25,8 @@
     name: 'choose',
     data: function () {
       return {
-        newValue: this.newValue
+        hueType: 'norm',
+        chosenColorId: ''
       }
     },
     components: {
@@ -22,17 +34,22 @@
       appToggle: Toggle
     },
     methods: {
-      changeGrid: function (newValue) {
-        console.log('in changeGrid! new grid value is', newValue)
-        this.newValue = newValue
+      toggleGrid: function (hueType) {
+        this.hueType = hueType
+      },
+      chooseColor: function (chosenColorId) {
+        this.chosenColorId = chosenColorId
       }
     }
   }
 </script>
 
 <style scoped>
-  h1 {
+  form {
     text-align: center;
+  }
+
+  h1 {
     margin-bottom: 2rem;
   }
 </style>

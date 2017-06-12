@@ -20,6 +20,7 @@
 
 <style>
   #app {
+    padding-bottom: 6rem;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     color: #222;
     font-size: 18px;

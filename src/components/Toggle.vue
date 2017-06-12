@@ -1,10 +1,28 @@
 <template>
   <div class="toggle-container">
-    <form class="toggle">
-      <radio-button class="radio-button" name="gridType" label="neon" :value="selectedValue" @change="getPalette"/>
-      <radio-button class="radio-button" name="gridType" label="norm" :value="selectedValue" @change="getPalette"/>
-      <radio-button class="radio-button" name="gridType" label="muted" :value="selectedValue" @change="getPalette"/>
-    </form>
+    <div class="toggle">
+      <radio-button
+        class="radio-button"
+        name="gridType"
+        label="neon"
+        :value="currHueType"
+        @select="getPalette"/>
+
+      <radio-button
+        class="radio-button"
+        name="gridType"
+        label="norm"
+        :value="currHueType"
+        @select="getPalette"/>
+
+      <radio-button
+        class="radio-button"
+        name="gridType"
+        label="muted"
+        :value="currHueType"
+        @select="getPalette"/>
+
+    </div>
   </div>
 </template>
 
@@ -18,29 +36,28 @@
     },
     data: function () {
       return {
-        selectedValue: 'norm'
+        currHueType: 'norm'
       }
     },
     methods: {
-      getPalette: function (newValue) {
-        this.selectedValue = newValue
-        console.log('selection is', newValue)
-        this.$emit('radioToggled', newValue)
+      getPalette: function (hueType) {
+        this.currHueType = hueType
+        this.$emit('radioToggled', hueType)
       }
     }
   }
 </script>
 
 <style scoped>
-.toggle {
-  padding: 2rem;
-  margin: auto;
-  width: 55vmin;
-  text-align: center;
-}
-
-.radio-button {
-  display: inline;
-  padding: 1.5rem;
-}
+  .toggle {
+    padding: 2rem;
+    margin: auto;
+    width: 55vmin;
+    text-align: center;
+  }
+  
+  .radio-button {
+    display: inline;
+    padding: 1.5rem;
+  }
 </style>
