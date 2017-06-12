@@ -1,22 +1,28 @@
 <template>
   <div id="app">
+    <app-header></app-header>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import Header from './components/Header'
+  
+  export default {
+    name: 'app',
+    components: {
+      appHeader: Header
+    }
+  }
 </script>
 
+<style src="./assets/base.scss" />
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    color: #222;
+    font-size: 18px;
+    letter-spacing: .05 rem;
+  }
 </style>
