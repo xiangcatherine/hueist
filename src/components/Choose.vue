@@ -2,7 +2,7 @@
   <div>
     <h1>how are you?</h1>
     <app-grid></app-grid>
-    <app-toggle></app-toggle>
+    <app-toggle @radioToggled="changeGrid"></app-toggle>
   </div>
 </template>
 
@@ -15,6 +15,11 @@
     components: {
       appGrid: Grid,
       appToggle: Toggle
+    },
+    methods: {
+      changeGrid: function (newValue) {
+        console.log('in changeGrid! new grid value is', newValue)
+      }
     }
   }
 </script>
@@ -25,3 +30,4 @@
     margin-bottom: 2rem;
   }
 </style>
+

@@ -20,6 +20,11 @@
           ['#ddd', '#ccc', '#ddd']
         ]
       }
+    },
+    methods: {
+      changeGrid: function () {
+        console.log('in Grid change grid!')
+      }
     }
   }
 </script>
