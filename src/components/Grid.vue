@@ -22,37 +22,37 @@
       return {
         palette: {
           neon: {
-            0: 'blue',
-            1: 'orange',
-            2: 'blue',
-            3: 'orange',
-            4: 'blue',
-            5: 'orange',
-            6: 'blue',
-            7: 'orange',
-            8: 'blue'
+            0: '#00EED7',
+            1: '#E600F2',
+            2: '#00F588',
+            3: '#FFFE00',
+            4: '#FF7F00',
+            5: '#CC00FF',
+            6: '#000000',
+            7: '#60F500',
+            8: '#16F2F2'
           },
           norm: {
-            9: '#ddd',
-            10: '#ccc',
-            11: '#ddd',
-            12: '#ccc',
-            13: '#ddd',
-            14: '#ccc',
-            15: '#ddd',
-            16: '#ccc',
-            17: '#ddd'
+            9: '#43AEC9',
+            10: '#E064C8',
+            11: '#1D9E69',
+            12: '#FFC438',
+            13: '#E5A953',
+            14: '#762BAD',
+            15: '#8F8D89',
+            16: '#2B6C33',
+            17: '#1E1ABD'
           },
           muted: {
-            18: 'pink',
-            19: 'yellow',
-            20: 'pink',
-            21: 'yellow',
-            22: 'pink',
-            23: 'yellow',
-            24: 'pink',
-            25: 'yellow',
-            26: 'pink'
+            18: '#C7EEE7',
+            19: '#FAD4D2',
+            20: '#CAE8B1',
+            21: '#FAF1A3',
+            22: '#FFE5B7',
+            23: '#EAD5FA',
+            24: '#EDEDED',
+            25: '#EDEAD6',
+            26: '#B6E4ED'
           }
         }
       }
@@ -79,16 +79,17 @@
 
 <style scoped>
   .grid {
-  	width: 55vmin;
-  	height: 55vmin;
+  	width: 58vmin;
+  	height: 58vmin;
   	margin: auto;
     font-size: 0;
   }
 
   .grid-cell {
   	display: inline-block;
-  	width: 33%;
-  	height: 33%;
+  	width: 31%;
+  	height: 31%;
     line-height: 0;
+    margin: 3px;
   }
 </style>
