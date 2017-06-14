@@ -18,6 +18,11 @@ export default new Vuex.Store({
       authToken: ''
     }
   },
+  getters: {
+    isAuthenticated (state) {
+      return state.user.authToken != null
+    }
+  },
   mutations: {
     addWebToken: function (state, webToken) {
       state.user.authToken = webToken

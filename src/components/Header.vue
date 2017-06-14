@@ -5,10 +5,10 @@
     </div>
 
     <div class="right">
-      <template v-if="authenticated">
+      <template v-if="isAuthenticated">
         <a href="">settings</a>
       </template> 
-      <template v-else>
+      <template v-if="!isAuthenticated">
         <app-sign-up class="sign-up-modal"></app-sign-up>
         <app-log-in class="log-in-modal"></app-log-in>
         <a href="" @click.stop.prevent="showLogIn">log in</a>
@@ -21,16 +21,17 @@
 <script>
   import LogIn from './LogIn'
   import SignUp from './SignUp'
+  import store from '../main.js'
 
   export default {
-    data: function () {
-      return {
-        authenticated: false
-      }
-    },
     components: {
       appLogIn: LogIn,
       appSignUp: SignUp
+    },
+    computed: {
+      isAuthenticated () {
+        return store.getters.isAuthenticated
+      }
     },
     methods: {
       showSignUp: function () {

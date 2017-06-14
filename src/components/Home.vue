@@ -1,17 +1,31 @@
 <template>
   <div>
-    <h2>use color to track your mood</h2>
+    <div v-if="!isAuthenticated">
+      <h2>use color to track your mood</h2>
+    </div>
+    <template>
+      <app-choose v-if="isAuthenticated"></app-choose>
+    </template>
   </div>
 </template>
 
 <script>
+import Choose from './Choose'
+import store from '../main.js'
 
 export default {
-  name: 'home'
+  name: 'home',
+  components: {
+    appChoose: Choose
+  },
+  computed: {
+    isAuthenticated () {
+      return store.getters.isAuthenticated
+    }
+  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   h1, h2 {
     font-weight: normal;
