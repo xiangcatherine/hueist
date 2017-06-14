@@ -11,6 +11,40 @@ Vue.use(Vuex)
 Vue.use(VueRouter)
 
 export default new Vuex.Store({
+  state: {
+    user: {
+      email: '',
+      loggedInStatus: true,
+      authToken: ''
+    }
+  },
+  mutations: {
+    addWebToken: function (state, webToken) {
+      state.user.authToken = webToken
+    },
+    removeWebToken: function (state) {
+      state.user.authToken = ''
+    }
+  },
+  actions: {
+    logIn: function (context, userInput) {
+      $.ajax({
+        url: 'http://localhost:4741/sign-in',
+        type: 'POST',
+        data: {
+          email: userInput.email,
+          password: userInput.password
+        },
+        success: function (data) {
+          console.log('success, sign in data is', data)
+          context.commit('addWebToken', this.webToken) // pass the webtoken as payload to the mutation
+        },
+        error: function (error) {
+          console.error(error)
+        }
+      })
+    }
+  }
 })
 
 /* eslint-disable no-new */

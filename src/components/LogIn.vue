@@ -32,7 +32,7 @@
 </template>
 
 <script>
-  import store from './store.js'
+  import store from '../main.js'
 
   export default {
     name: 'logIn',
@@ -44,24 +44,8 @@
       }
     },
     methods: {
-      apiCall: function () {
-        var data = {
-          email: this.email,
-          password: this.password
-        }
-
-        return $.ajax({
-          url: 'http://localhost:4741/sign-in',
-          method: 'POST',
-          data
-        })
-      },
       logIn: function () {
-        this.apiCall()
-          .then(console.log('sign in success!'))
-          .catch(function (error) {
-            console.log('error! it is', error)
-          })
+        this.store.dispatch('logIn', {email: this.email, password: this.password})
       },
       closeModal: function () {
         $('.modal').css('display', 'none')

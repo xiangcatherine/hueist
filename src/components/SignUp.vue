@@ -42,13 +42,10 @@
 </template>
 
 <script>
-  import store from './store.js'
-
   export default {
     name: 'signUp',
     data: function () {
       return {
-        store: store,
         email: '',
         password: '',
         passwordAgain: ''
