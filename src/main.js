@@ -1,5 +1,3 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
@@ -10,22 +8,26 @@ Vue.config.productionTip = false
 Vue.use(Vuex)
 Vue.use(VueRouter)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     user: {
       email: '',
-      loggedInStatus: true,
-      authToken: ''
+      authToken: '',
+      id: ''
     }
   },
   getters: {
     isAuthenticated (state) {
-      return state.user.authToken != null
+      return state.user.authToken !== ''
+    },
+    getToken (state) {
+      return state.user.authToken
     }
   },
   mutations: {
-    addWebToken: function (state, webToken) {
-      state.user.authToken = webToken
+    addWebToken: function (state, data) {
+      state.user.authToken = data.user.token
+      state.user.id = data.user.id
     },
     removeWebToken: function (state) {
       state.user.authToken = ''
@@ -42,7 +44,23 @@ export default new Vuex.Store({
         },
         success: function (data) {
           console.log('success, sign in data is', data)
-          context.commit('addWebToken', this.webToken) // pass the webtoken as payload to the mutation
+          context.commit('addWebToken', data) // pass the webtoken as payload to the mutation
+        },
+        error: function (error) {
+          console.error(error)
+        }
+      })
+    },
+    logOut: function (context) {
+      $.ajax({
+        url: ('http://localhost:4741/sign-out/' + context.state.user.id),
+        type: 'DELETE',
+        headers: {
+          Authorization: 'Token token=' + context.state.user.authToken
+        },
+        success: function () {
+          console.log('log out successful')
+          context.commit('removeWebToken')
         },
         error: function (error) {
           console.error(error)
@@ -57,5 +75,6 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  store
 })

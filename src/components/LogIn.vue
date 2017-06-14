@@ -32,20 +32,17 @@
 </template>
 
 <script>
-  import store from '../main.js'
-
   export default {
     name: 'logIn',
     data: function () {
       return {
-        store: store,
         email: '',
         password: ''
       }
     },
     methods: {
       logIn: function () {
-        this.store.dispatch('logIn', {email: this.email, password: this.password})
+        this.$store.dispatch('logIn', {email: this.email, password: this.password})
       },
       closeModal: function () {
         $('.modal').css('display', 'none')
