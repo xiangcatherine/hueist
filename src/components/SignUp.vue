@@ -10,7 +10,6 @@
             type="email"
             id="sign-up-email"
             v-model="email" />
-          <span class="error-message"></span>
         </div>
 
         <div class="fieldset">
@@ -20,7 +19,6 @@
             id="sign-up-password"
             type="password"
             v-model="password" />
-          <span class="error-message"></span>
         </div>
 
         <div class="fieldset">
@@ -30,12 +28,12 @@
             id="sign-up-password-again"
             type="password"
             v-model="passwordAgain" />
-          <span class="error-message"></span>
         </div>
 
         <div class="fieldset">
           <button @click.prevent="signUp()">sign up</button>
         </div>
+        <span class="error-message"></span>
       </form>
     </div>
   </div>
@@ -67,7 +65,7 @@
       },
       signUp: function () {
         this.apiCall()
-          .then(console.log('yee'))
+          .then(this.closeModal())
           .catch(function (error) {
             console.log('error! it is', error)
           })

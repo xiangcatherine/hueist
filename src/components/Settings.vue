@@ -39,6 +39,7 @@
             <button @click.prevent="changePassword()">change password</button>
           </div>
         </form>
+        <div class="error-message"></div>
     </div>
   </div>
 </template>
@@ -100,10 +101,6 @@
     .fieldset > * {
       display: block;
       margin-bottom: .5rem;
-    }
-
-    .error-message {
-      display: none;
     }
 
     .close {
