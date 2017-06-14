@@ -9,9 +9,10 @@
         <a href="">settings</a>
       </template> 
       <template v-else>
-        <app-sign-up></app-sign-up>
-        <a href="">log in</a>
-        <a href="">sign up</a>
+        <app-sign-up class="sign-up-modal"></app-sign-up>
+        <app-log-in class="log-in-modal"></app-log-in>
+        <a href="" @click.stop.prevent="showLogIn">log in</a>
+        <a href="" @click.stop.prevent="showSignUp">sign up</a>
       </template>
     </div>
   </nav>
@@ -30,6 +31,14 @@
     components: {
       appLogIn: LogIn,
       appSignUp: SignUp
+    },
+    methods: {
+      showSignUp: function () {
+        $('.sign-up-modal').css('display', 'block')
+      },
+      showLogIn: function () {
+        $('.log-in-modal').css('display', 'block')
+      }
     }
   }
 </script>
@@ -56,5 +65,11 @@
   a:focus,
   a:active {
     background: #fff8ea;
+  }
+
+  .sign-up-modal,
+  .log-in-modal {
+    display: none;
+    margin: auto;
   }
 </style>
