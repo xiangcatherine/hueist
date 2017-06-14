@@ -84,14 +84,14 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: 3rem;
+    padding: 4rem 2rem;
   }
 
   .modal-content {
     margin: 15% auto;
     background: #fff8ea;
     padding: 20px;
-    border: 1px solid #888;
+/*    border: 1px solid #888;*/
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;

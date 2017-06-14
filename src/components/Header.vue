@@ -13,8 +13,8 @@
       <template v-if="!isAuthenticated">
         <app-sign-up class="sign-up-modal"></app-sign-up>
         <app-log-in class="log-in-modal"></app-log-in>
-        <a href="" @click.stop.prevent="showLogIn">log in</a>
-        <a href="" @click.stop.prevent="showSignUp">sign up</a>
+        <a href="" class="log-in-link" @click.stop.prevent="showLogIn">log in</a>
+        <a href="" class="sign-up-link" @click.stop.prevent="showSignUp">sign up</a>
       </template>
     </div>
   </nav>
@@ -59,16 +59,22 @@
     align-items: center;
     margin-bottom: 1rem;
     padding: 2rem;
+    opacity: 0.8;
   }
 
   .right {
     margin-left: auto;
   }
 
+  .logo {
+    letter-spacing: .1rem;
+    font-size: 20px;
+  }
+
   a {
     color: #222;
     text-decoration: none;
-    padding: 2rem 1.5rem;
+    padding: 1.7rem;
   }
 
   a:hover,
@@ -82,5 +88,13 @@
   .settings-modal {
     display: none;
     margin: auto;
+  }
+
+  .log-in-link:hover {
+    background: #C8C8A9;
+  }
+
+  .sign-up-link:hover {
+    background: #83AF9B;
   }
 </style>

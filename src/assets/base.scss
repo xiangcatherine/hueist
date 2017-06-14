@@ -41,3 +41,10 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0
+}
+

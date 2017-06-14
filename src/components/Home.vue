@@ -1,11 +1,13 @@
 <template>
   <div>
     <div v-if="!isAuthenticated">
-      <h2>use color to track your mood</h2>
+      <h1>use color to track your mood</h1>
     </div>
-    <template v-if="isAuthenticated">
-      <app-choose></app-choose>
-    </template>
+    <transition name="fade">
+      <template v-if="isAuthenticated">
+        <app-choose></app-choose>
+      </template>
+    </transition>
   </div>
 </template>
 
@@ -26,15 +28,8 @@ export default {
 </script>
 
 <style scoped>
-  h1, h2 {
-    font-weight: normal;
-  }
-
   h1 {
-    letter-spacing: .5rem;
-  }
-
-  h2 {
+    font-weight: normal;
     text-align: center;
     margin-top: 20px;
   }

@@ -50,6 +50,7 @@
   }
 
   h1 {
+    margin-top: 10px;
     margin-bottom: 2rem;
   }
 </style>
