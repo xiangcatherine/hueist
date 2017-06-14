@@ -7,11 +7,7 @@
 <script>
 
 export default {
-  name: 'home',
-  data () {
-    return {
-    }
-  }
+  name: 'home'
 }
 </script>
 

@@ -9,6 +9,7 @@
         <a href="">settings</a>
       </template> 
       <template v-else>
+        <app-sign-up></app-sign-up>
         <a href="">log in</a>
         <a href="">sign up</a>
       </template>
@@ -17,11 +18,18 @@
 </template>
 
 <script>
+  import LogIn from './LogIn'
+  import SignUp from './SignUp'
+
   export default {
-    data () {
+    data: function () {
       return {
-        authenticated: true
+        authenticated: false
       }
+    },
+    components: {
+      appLogIn: LogIn,
+      appSignUp: SignUp
     }
   }
 </script>
