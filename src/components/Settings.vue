@@ -17,7 +17,7 @@
         </div>
         <form class="form">
           <div class="fieldset">
-            <label class="change-password" for="change-password">old password</label>
+            <label class="change-password" for="old-password">old password</label>
             <input
               class="change-password-input"
               type="password"
@@ -26,7 +26,7 @@
           </div>
 
           <div class="fieldset">
-            <label class="change-password" for="change-password">new password</label>
+            <label class="change-password" for="new-password">new password</label>
             <input
               class="change-password-input"
               id="new-password"

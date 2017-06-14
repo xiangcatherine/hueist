@@ -11,9 +11,17 @@
       @radioToggled="toggleGrid">
     </app-toggle>
 
-    <template v-if="chosenColorId">
-      <button type="submit">Submit</button>
-    </template>
+    <div>
+      <template v-if="chosenColorId">
+        <button @click.prevent="createMood()">submit</button><br>
+        <input 
+          id="note-input"
+          class="note-input"
+          type="text"
+          v-model="note"
+          placeholder="add some notes"/>
+      </template>
+    </div>
   </form>
 </template>
 
@@ -26,7 +34,8 @@
     data: function () {
       return {
         hueType: 'norm',
-        chosenColorId: ''
+        chosenColorId: '',
+        note: ''
       }
     },
     components: {
@@ -39,6 +48,30 @@
       },
       chooseColor: function (chosenColorId) {
         this.chosenColorId = chosenColorId
+      },
+      apiCall: function () {
+        var data = {
+          mood: {
+            color_id: this.chosenColorId,
+            note: this.note
+          }
+        }
+
+        return $.ajax({
+          url: 'http://localhost:4741/moods',
+          method: 'POST',
+          headers: {
+            Authorization: 'Token token=' + this.$store.state.user.authToken
+          },
+          data
+        })
+      },
+      createMood: function () {
+        this.apiCall()
+          .then(console.log('mood created successfully'))
+          .catch(function (error) {
+            console.log('create mood error! it is', error)
+          })
       }
     }
   }
@@ -52,6 +85,15 @@
   h1 {
     margin-top: 10px;
     margin-bottom: 2rem;
+  }
+
+  .note-input {
+    padding: .5rem;
+    border: 1px solid transparent;
+    outline: 0;
+    border-color: black;
+    display: inline-block;
+    margin-top: 10px;
   }
 </style>
 
