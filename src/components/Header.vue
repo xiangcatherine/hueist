@@ -58,8 +58,8 @@
   nav {
     display: flex;
     align-items: center;
+    padding: 2rem 0;
     margin-bottom: 1rem;
-    padding: 2rem;
     opacity: 0.8;
   }
 

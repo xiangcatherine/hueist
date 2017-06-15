@@ -10,7 +10,6 @@
         @click.stop.prevent="setColor" >
       </a>
     </template>
-    {{ currSelected }}
   </div>
 </template>
 
