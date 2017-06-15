@@ -2,7 +2,7 @@
 	<div class="modal">
     <div class="modal-content">
       <span class="close" @click.stop.prevent="closeModal">&times;</span>
-  		<form class="form">
+  		<form class="form" id="sign-in-form">
   			<div class="fieldset">
     			<label class="email" for="signin-email">email</label>
    				<input
@@ -24,7 +24,9 @@
   			<div class="fieldset">
   				<button @click.prevent="logIn()">log in</button>
   			</div>
-        <span class="error-message"></span>
+        <transition name="fade">
+          <span class="error-message"></span>
+        </transition>
   		</form>
     </div>
   </div>
@@ -124,10 +126,6 @@
   #signin-password:focus{
     outline: 0;
     border-color: black !important;
-  }
-
-  .error-message {
-    display: none;
   }
 
   .close {

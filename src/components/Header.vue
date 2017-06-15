@@ -8,9 +8,7 @@
 
     <div class="right">
       <template v-if="isAuthenticated">
-        <transition name="fade">
-          <a href="" @click.stop.prevent="goToSettings()">settings</a>
-        </transition>
+        <a href="" @click.stop.prevent="goToSettings()">settings</a>
         <a href="" @click.stop.prevent="logOut()">log out</a>
         <app-settings class="settings-modal"></app-settings>
       </template> 

@@ -18,29 +18,13 @@ export default {
     }
   },
   methods: {
-    apiCall: function () {
-      var data = {
-        user: {
-          greeting: this.greeting
-        }
-      }
-      return $.ajax({
-        url: 'http://localhost:4741/users/' + this.$store.state.user.id + '/change-greeting',
-        method: 'PATCH',
-        headers: {
-          Authorization: 'Token token=' + this.$store.state.user.authToken
-        },
-        data
-      })
-    },
     updateGreeting: function () {
-      this.apiCall()
-        .then(
-          console.log('greeting updated successfully!'),
-          )
-        .catch(function (error) {
-          console.error('greeting not updated', error)
-        })
+      this
+        .$store
+        .dispatch(
+          'updateGreeting',
+          {greeting: this.greeting}
+        )
     }
   }
 }

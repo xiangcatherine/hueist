@@ -42,11 +42,11 @@ const store = new Vuex.Store({
     },
     removeWebToken: function (state) {
       state.user.authToken = ''
+    },
+    changeMessage: function (state, data) {
+      state.user.greeting = data.user.greeting
+      console.log('what is data', data)
     }
-    // changeMessage: function (state, data) {
-    //   state.user.greeting = data.user.greeting
-    //   console.log('what is data', data)
-    // }
   },
   actions: {
     logIn: function (context, userInput) {
@@ -68,31 +68,31 @@ const store = new Vuex.Store({
         })
       })
     },
-    // updateGreeting: function (context, userInput) {
-    //   return new Promise((resolve, reject) => {
-    //     $.ajax({
-    //       url: 'http://localhost:4741/users/' + context.state.user.id + '/change-greeting',
-    //       type: 'PATCH',
-    //       headers: {
-    //         Authorization: 'Token token=' + context.state.user.authToken
-    //       },
-    //       data: {
-    //         user: {
-    //           greeting: userInput.greeting
-    //         }
-    //       },
-    //       success: function (data) {
-    //         context.commit('changeMessage', data)
-    //         console.log(data)
-    //         resolve(data)
-    //       },
-    //       error: function (reason) {
-    //         reject(reason)
-    //         console.log(reason)
-    //       }
-    //     })
-    //   })
-    // },
+    updateGreeting: function (context, userInput) {
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          url: 'http://localhost:4741/users/' + context.state.user.id + '/change-greeting',
+          type: 'PATCH',
+          headers: {
+            Authorization: 'Token token=' + context.state.user.authToken
+          },
+          data: {
+            user: {
+              greeting: userInput.greeting
+            }
+          },
+          success: function (data) {
+            context.commit('changeMessage', data)
+            console.log(data)
+            resolve(data)
+          },
+          error: function (reason) {
+            reject(reason)
+            console.log(reason)
+          }
+        })
+      })
+    },
     changePassword: function (context, userInput) {
       console.log(userInput)
       $.ajax({
