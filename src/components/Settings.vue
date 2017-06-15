@@ -1,19 +1,9 @@
-<form id="change-password" class="hidden">
-      <fieldset>
-        <input type="password" name="passwords[old]" placeholder="old password">
-        <input type="password" name="passwords[new]" placeholder="new password">
-        <button type="submit" name="submit" value="change password">submit</button>
-      </fieldset>
-    </form>
-    <div class="change-pwd-success hidden"></div>
-    <div class="change-pwd-error hidden"></div>
-
 <template>
   <div class="modal">
     <div class="modal-content">
       <span class="close" @click.stop.prevent="closeModal">&times;</span>
         <div class="fieldset">
-          <button @click.prevent="">view mood history</button>
+          <a href="" @click.prevent="goToHistory()">view mood history</a>
         </div>
         <form class="form">
           <div class="fieldset">
@@ -59,6 +49,10 @@
       },
       changePassword: function () {
         this.$store.dispatch('changePassword', {old: this.old, new: this.password})
+      },
+      goToHistory: function () {
+        this.$router.push('view-history')
+        this.closeModal()
       }
     }
   }

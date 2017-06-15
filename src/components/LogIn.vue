@@ -40,9 +40,32 @@
         password: ''
       }
     },
+    computed: {
+      isAuthenticated () {
+        return this.$store.getters.isAuthenticated
+      }
+    },
     methods: {
       logIn: function () {
-        this.$store.dispatch('logIn', {email: this.email, password: this.password})
+        var vm = this
+
+        vm
+          .$store
+          .dispatch(
+            'logIn',
+            { email: this.email, password: this.password }
+          )
+          .then(
+            function (response) {
+              console.log(response)
+              vm.$router.push({ name: 'Choose' })
+            }
+          )
+          .catch(
+            function (error) {
+              console.log('meh pupuru', error)
+            }
+          )
       },
       closeModal: function () {
         $('.modal').css('display', 'none')
@@ -72,7 +95,7 @@
   }
 
   @-webkit-keyframes animatetop {
-    from {top: -300px; opacity: 0} 
+    from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}
   }
 

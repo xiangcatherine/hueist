@@ -33,22 +33,34 @@ const store = new Vuex.Store({
       state.user.authToken = ''
     }
   },
+// actions: {
+//   actionA ({ commit }) {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         commit('someMutation')
+//         resolve()
+//       }, 1000)
+//     })
+//   }
+// }
   actions: {
     logIn: function (context, userInput) {
-      $.ajax({
-        url: 'http://localhost:4741/sign-in',
-        type: 'POST',
-        data: {
-          email: userInput.email,
-          password: userInput.password
-        },
-        success: function (data) {
-          console.log('success, sign in data is', data)
-          context.commit('addWebToken', data) // pass the webtoken as payload to the mutation
-        },
-        error: function (error) {
-          console.error(error)
-        }
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          url: 'http://localhost:4741/sign-in',
+          type: 'POST',
+          data: {
+            email: userInput.email,
+            password: userInput.password
+          },
+          success: function (data) {
+            context.commit('addWebToken', data)
+            resolve(data)
+          },
+          error: function (reason) {
+            reject(reason)
+          }
+        })
       })
     },
     changePassword: function (context, userInput) {

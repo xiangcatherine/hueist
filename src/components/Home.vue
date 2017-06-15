@@ -1,13 +1,6 @@
 <template>
   <div>
-    <div v-if="!isAuthenticated">
-      <h1>use color to track your mood</h1>
-    </div>
-    <transition name="fade">
-      <template v-if="isAuthenticated">
-        <app-choose></app-choose>
-      </template>
-    </transition>
+    <h1>use color to track your mood</h1>
   </div>
 </template>
 

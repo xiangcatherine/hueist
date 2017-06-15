@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div>    
-      <a href="" class="logo">hueist</a>
+      <a href="" @click.stop.prevent="$router.push('Choose')" class="logo">hueist</a>
     </div>
 
     <div class="right">
@@ -39,6 +39,7 @@
     methods: {
       logOut: function () {
         this.$store.dispatch('logOut')
+        this.$router.push({ name: 'Home' })
       },
       showSignUp: function () {
         $('.sign-up-modal').css('display', 'block')

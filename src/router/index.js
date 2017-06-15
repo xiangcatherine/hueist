@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 import Choose from '@/components/Choose'
+import viewHistory from '@/components/ViewHistory'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/choose',
       name: 'Choose',
       component: Choose
+    },
+    {
+      path: '/view-history',
+      name: 'viewHistory',
+      component: viewHistory
     }
   ]
 })
