@@ -33,16 +33,6 @@ const store = new Vuex.Store({
       state.user.authToken = ''
     }
   },
-// actions: {
-//   actionA ({ commit }) {
-//     return new Promise((resolve, reject) => {
-//       setTimeout(() => {
-//         commit('someMutation')
-//         resolve()
-//       }, 1000)
-//     })
-//   }
-// }
   actions: {
     logIn: function (context, userInput) {
       return new Promise((resolve, reject) => {
@@ -79,7 +69,6 @@ const store = new Vuex.Store({
         },
         success: function (data) {
           console.log('change pw successful')
-          console.log('change password data is', data)
         },
         error: function (error) {
           console.error(error)
