@@ -1,0 +1,10 @@
+{
+ "name": "hueist",
+ "version": "1.0.0",
+ "description": "Color based mood-tracker",
+ "author": "Catherine Xiang",
+ "private": true,
+ "scripts": {
+   "postinstall": "npm install express"
+ }
+}
