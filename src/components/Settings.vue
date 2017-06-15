@@ -3,17 +3,20 @@
     <a class="view-history-link" href="" @click.prevent="goToMoodHistory()">view mood history</a>
     <app-change-password class="app-change-password"></app-change-password>
     <a class="clear-history-link" href="" @click.stop.prevent="clearHistory()">clear mood history</a>
+    <app-change-greeting class="app-change-greeting"></app-change-greeting>
   </div>
 </template>
 
 <script>
   import ChangePassword from './ChangePassword'
+  import ChangeGreeting from './ChangeGreeting'
   // import store from '../main.js'
 
   export default {
     name: 'Settings',
     components: {
-      appChangePassword: ChangePassword
+      appChangePassword: ChangePassword,
+      appChangeGreeting: ChangeGreeting
     },
     data: function () {
       return {
@@ -58,6 +61,10 @@
   }
 
   .app-change-password {
+    margin-top: 2rem;
+  }
+  
+  .app-change-greeting {
     margin-top: 2rem;
   }
 
