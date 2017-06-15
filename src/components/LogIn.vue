@@ -63,6 +63,9 @@
               vm.$router.push({ name: 'Choose' })
             }
           )
+          .then(
+            $('.sign-in-input').val('')
+          )
           .catch(
             function (error) {
               $('.error-message').text('Sorry, try again!')
@@ -82,7 +85,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: 4rem;
+    padding: 4rem 2rem;
   }
 
   .modal-content {

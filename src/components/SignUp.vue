@@ -90,7 +90,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: 4rem 2rem;
+    padding: 4rem;
   }
 
   .modal-content {
