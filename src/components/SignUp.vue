@@ -30,8 +30,8 @@
             v-model="passwordAgain" />
         </div>
 
-        <div class="fieldset">
-          <button @click.prevent="signUp()">sign up</button>
+        <div class="fieldset" >
+          <button v-if="doPasswordsMatch && checkforPassword" @click.prevent="signUp()">sign up</button>
         </div>
         <span class="error-message"></span>
       </form>
@@ -47,6 +47,14 @@
         email: '',
         password: '',
         passwordAgain: ''
+      }
+    },
+    computed: {
+      doPasswordsMatch () {
+        return this.password === this.passwordAgain
+      },
+      checkforPassword () {
+        return this.password.length > 0 && this.passwordAgain.length > 0
       }
     },
     methods: {

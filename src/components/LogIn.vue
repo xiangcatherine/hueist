@@ -10,7 +10,6 @@
             id="signin-email"
             type="email"
             v-model="email">
-  				<span class="error-message"></span>
   			</div>
 
   			<div class="fieldset">
@@ -20,18 +19,19 @@
             id="signin-password"
             type="password"
             v-model="password">
-  				<span class="error-message"></span>
   			</div>
 
   			<div class="fieldset">
   				<button @click.prevent="logIn()">log in</button>
   			</div>
+        <span class="error-message"></span>
   		</form>
     </div>
   </div>
 </template>
 
 <script>
+
   export default {
     name: 'logIn',
     data: function () {
@@ -63,6 +63,7 @@
           )
           .catch(
             function (error) {
+              $('.error-message').text('Sorry, try again!')
               console.log('meh pupuru', error)
             }
           )
