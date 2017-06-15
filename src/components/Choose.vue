@@ -14,12 +14,6 @@
     <div>
       <template v-if="chosenColorId">
         <button @click.prevent="createMood()">submit</button><br>
-        <input 
-          id="note-input"
-          class="note-input"
-          type="text"
-          v-model="note"
-          placeholder="add some notes"/>
       </template>
     </div>
   </form>
@@ -34,8 +28,7 @@
     data: function () {
       return {
         hueType: 'norm',
-        chosenColorId: '',
-        note: ''
+        chosenColorId: ''
       }
     },
     components: {
@@ -52,8 +45,7 @@
       apiCall: function () {
         var data = {
           mood: {
-            color_id: this.chosenColorId,
-            note: this.note
+            color_id: this.chosenColorId
           }
         }
 
@@ -85,15 +77,6 @@
   h1 {
     margin-top: 10px;
     margin-bottom: 2rem;
-  }
-
-  .note-input {
-    padding: .5rem;
-    border: 1px solid transparent;
-    outline: 0;
-    border-color: black;
-    display: inline-block;
-    margin-top: 10px;
   }
 </style>
 

@@ -3,12 +3,14 @@
     <template v-for="(color, index) in currPalette">
 	    <a
         href=""
-        class="grid-cell"
-        :id="index"        
+        class="gridCell"
+        :class="{ selectedCell: isSelected(index) }"
+        :id="index"
         :style="{background: color}"
         @click.stop.prevent="setColor" >
       </a>
     </template>
+    {{ currSelected }}
   </div>
 </template>
 
@@ -54,23 +56,31 @@
             25: '#EDEAD6',
             26: '#B6E4ED'
           }
-        }
+        },
+        currSelected: ''
       }
     },
     computed: {
       currPalette: function () {
         switch (this.hueType) {
           case 'neon':
+            this.$emit('colorId', '')
             return this.palette.neon
           case 'norm':
+            this.$emit('colorId', '')
             return this.palette.norm
           case 'muted':
+            this.$emit('colorId', '')
             return this.palette.muted
         }
       }
     },
     methods: {
+      isSelected: function (index) {
+        return (this.currSelected === index)
+      },
       setColor: function (event) {
+        this.currSelected = event.target.id
         this.$emit('colorId', event.target.id)
       }
     }
@@ -85,11 +95,16 @@
     font-size: 0;
   }
 
-  .grid-cell {
+  .gridCell {
   	display: inline-block;
-  	width: 31%;
-  	height: 31%;
+  	width: 28%;
+  	height: 28%;
     line-height: 0;
-    margin: 3px;
+    margin: 2%;
+    transition: transform .1s ease;
+  }
+
+  .selectedCell {
+     transform: rotate(10deg);
   }
 </style>

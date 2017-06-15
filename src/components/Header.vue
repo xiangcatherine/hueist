@@ -6,15 +6,15 @@
 
     <div class="right">
       <template v-if="isAuthenticated">
-        <a href="" @click.stop.prevent="showSettings">settings</a>
+        <a href="" @click.stop.prevent="goToSettings()">settings</a>
         <a href="" @click.stop.prevent="logOut()">log out</a>
         <app-settings class="settings-modal"></app-settings>
       </template> 
       <template v-if="!isAuthenticated">
         <app-sign-up class="sign-up-modal"></app-sign-up>
         <app-log-in class="log-in-modal"></app-log-in>
-        <a href="" class="log-in-link" @click.stop.prevent="showLogIn">log in</a>
         <a href="" class="sign-up-link" @click.stop.prevent="showSignUp">sign up</a>
+        <a href="" class="log-in-link" @click.stop.prevent="showLogIn">log in</a>
       </template>
     </div>
   </nav>
@@ -47,8 +47,8 @@
       showLogIn: function () {
         $('.log-in-modal').css('display', 'block')
       },
-      showSettings: function () {
-        $('.settings-modal').css('display', 'block')
+      goToSettings: function () {
+        this.$router.push({ name: 'Settings' })
       }
     }
   }
