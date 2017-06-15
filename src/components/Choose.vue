@@ -1,6 +1,7 @@
 <template>
   <form :value="chosenColorId">
-    <h1>how are you?</h1>
+    <h1 v-if="checkMessage">{{ getMessage }}</h1>
+    <h1 v-if="checkMessageNull">how are you?</h1>
 
     <app-grid
       :hue-type="hueType"
@@ -28,12 +29,24 @@
     data: function () {
       return {
         hueType: 'norm',
-        chosenColorId: ''
+        chosenColorId: '',
+        greeting: ''
       }
     },
     components: {
       appGrid: Grid,
       appToggle: Toggle
+    },
+    computed: {
+      checkMessage () {
+        return this.$store.getters.checkMessage
+      },
+      checkMessageNull () {
+        return this.$store.getters.checkMessageNull
+      },
+      getMessage () {
+        return this.$store.getters.getMessage
+      }
     },
     methods: {
       toggleGrid: function (hueType) {

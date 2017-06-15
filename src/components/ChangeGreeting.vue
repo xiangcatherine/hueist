@@ -6,7 +6,6 @@
         placeholder="change greeting message"
         v-model="greeting"/> 
     <button class="change-greeting-submit" @click.prevent="updateGreeting()">change greeting</button>
-    <p>{{greeting}}</p>
   </form>
 </template>
 
@@ -36,7 +35,9 @@ export default {
     },
     updateGreeting: function () {
       this.apiCall()
-        .then(console.log('greeting updated successfully!'))
+        .then(
+          console.log('greeting updated successfully!'),
+          )
         .catch(function (error) {
           console.error('greeting not updated', error)
         })
