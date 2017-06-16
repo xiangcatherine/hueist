@@ -22,38 +22,38 @@
     data: function () {
       return {
         palette: {
-          neon: {
-            0: '#00EED7',
-            1: '#E600F2',
-            2: '#00F588',
-            3: '#FFFE00',
-            4: '#FF7F00',
-            5: '#CC00FF',
-            6: '#000000',
-            7: '#60F500',
-            8: '#16F2F2'
+          warm: {
+            0: '#C71B20',
+            1: '#DA4120',
+            2: '#EB6A28',
+            3: '#FF9A2D',
+            4: '#FCBE2E',
+            5: '#FFE025',
+            6: '#D21B78',
+            7: '#EB1F84',
+            8: '#FF5D9F'
           },
-          norm: {
-            9: '#43AEC9',
-            10: '#E064C8',
-            11: '#1D9E69',
-            12: '#FFC438',
-            13: '#E5A953',
-            14: '#762BAD',
-            15: '#8F8D89',
-            16: '#2B6C33',
-            17: '#1E1ABD'
+          neutral: {
+            0: '#C5A0CF',
+            1: '#A0A8C9',
+            2: '#9ACCC2',
+            3: '#B0D4A2',
+            4: '#E3DAAB',
+            5: '#FADAA1',
+            6: '#ECA7B6',
+            7: '#E5B1A9',
+            8: '#F7CDA3'
           },
-          muted: {
-            18: '#C7EEE7',
-            19: '#FAD4D2',
-            20: '#CAE8B1',
-            21: '#FAF1A3',
-            22: '#FFE5B7',
-            23: '#EAD5FA',
-            24: '#EDEDED',
-            25: '#EDEAD6',
-            26: '#B6E4ED'
+          cool: {
+            0: '#C130E3',
+            1: '#8034DE',
+            2: '#3A39ED',
+            3: '#3D8AFF',
+            4: '#33C4EF',
+            5: '#32E3BE',
+            6: '#289C18',
+            7: '#1FBF43',
+            8: '#25D980'
           }
         },
         currSelected: ''
@@ -62,15 +62,15 @@
     computed: {
       currPalette: function () {
         switch (this.hueType) {
-          case 'neon':
+          case 'warm':
             this.$emit('colorId', '')
-            return this.palette.neon
-          case 'norm':
+            return this.palette.warm
+          case 'neutral':
             this.$emit('colorId', '')
-            return this.palette.norm
-          case 'muted':
+            return this.palette.neutral
+          case 'cool':
             this.$emit('colorId', '')
-            return this.palette.muted
+            return this.palette.cool
         }
       }
     },
@@ -88,9 +88,9 @@
 
 <style scoped>
   .grid {
-  	width: 58vmin;
-  	height: 58vmin;
-  	margin: auto;
+    width: 70vmin;
+    height: 70vmin;
+    margin: auto;
     font-size: 0;
   }
 
@@ -103,7 +103,12 @@
     transition: transform .1s ease;
   }
 
+  .gridCell:hover {
+    transform: scale(1.1, 1.1);
+  }
+
   .selectedCell {
-     transform: rotate(10deg);
+     transform: scale(.75, .75) !important;
+     border-radius: 50%;
   }
 </style>

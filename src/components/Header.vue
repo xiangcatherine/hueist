@@ -77,6 +77,10 @@
     padding: 1.7rem;
   }
 
+  a:focus {
+    outline: 0;
+  }
+
   .logo:hover {
     background: #fadaa1;
   }

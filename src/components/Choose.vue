@@ -1,21 +1,23 @@
 <template>
   <form :value="chosenColorId">
-    <h1 v-if="checkMessage">{{ getMessage }}</h1>
-    <h1 v-if="checkMessageNull">how are you?</h1>
+    <div class="inline">
+      <app-grid
+        :hue-type="hueType"
+        @colorId="chooseColor">
+      </app-grid>
+    </div>
 
-    <app-grid
-      :hue-type="hueType"
-      @colorId="chooseColor">
-    </app-grid>
+    <div class="inline message">
+      <h1 v-if="checkMessage">{{ getMessage }}</h1>
+      <h1 v-if="checkMessageNull">how are you?</h1>
 
-    <app-toggle
-      @radioToggled="toggleGrid">
-    </app-toggle>
+      <app-toggle
+        @radioToggled="toggleGrid">
+      </app-toggle>
 
-    <div>
-      <template v-if="chosenColorId">
-        <button @click.prevent="createMood()">submit</button><br>
-      </template>
+      <div>
+        <button @click.prevent="createMood()" :class="{visible: chosenColorId}">submit</button><br>
+      </div>
     </div>
   </form>
 </template>
@@ -28,7 +30,7 @@
     name: 'choose',
     data: function () {
       return {
-        hueType: 'norm',
+        hueType: 'neutral',
         chosenColorId: '',
         greeting: ''
       }
@@ -89,8 +91,26 @@
   }
 
   h1 {
-    margin-top: 10px;
     margin-bottom: 2rem;
+  }
+
+  .inline {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  button {
+    margin-top: 2rem;
+    visibility: hidden;
+  }
+
+  .visible {
+    visibility: visible;
+  }
+
+  .message {
+    width: 300px;
+    padding: 2rem 0;
   }
 </style>
 

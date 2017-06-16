@@ -7,8 +7,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -19,7 +19,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -102,4 +102,18 @@ table {
 
 .v-toaster .v-toast .v-toast-btn-clear {
   display: none;
+}
+
+button {
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: .7rem 1rem .75rem 1rem;
+  background: #fff;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  border-color: black;
+  outline: 0;
 }

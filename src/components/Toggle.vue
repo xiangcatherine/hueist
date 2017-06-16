@@ -4,21 +4,21 @@
       <radio-button
         class="radio-button"
         name="gridType"
-        label="neon"
+        label="warm"
         :value="currHueType"
         @select="getPalette"/>
 
       <radio-button
         class="radio-button"
         name="gridType"
-        label="norm"
+        label="neutral"
         :value="currHueType"
         @select="getPalette"/>
 
       <radio-button
         class="radio-button"
         name="gridType"
-        label="muted"
+        label="cool"
         :value="currHueType"
         @select="getPalette"/>
 
@@ -36,7 +36,7 @@
     },
     data: function () {
       return {
-        currHueType: 'norm'
+        currHueType: 'neutral'
       }
     },
     methods: {
@@ -50,14 +50,13 @@
 
 <style scoped>
   .toggle {
-    padding: 2rem;
     margin: auto;
-    width: 55vmin;
+    width: 200px;
     text-align: center;
   }
   
   .radio-button {
     display: inline;
-    padding: 1.5rem;
+    padding: 0rem .5rem;
   }
 </style>
