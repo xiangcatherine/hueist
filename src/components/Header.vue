@@ -2,7 +2,12 @@
   <nav>
     <div>    
       <transition name="fade">
-        <a href="" @click.stop.prevent="$router.push('Choose')" class="logo">hueist</a>
+        <template v-if="isAuthenticated">
+          <a href="" @click.stop.prevent="$router.push('Choose')" class="logo">hueist</a>
+        </template> 
+        <template v-else>
+          <a href="" @click.stop.prevent class="logo">hueist</a>
+        </template>
       </transition>
     </div>
 
