@@ -1,11 +1,11 @@
 <template>
   <div class="grid">
-    <template v-for="(color, index) in currPalette">
+    <template v-for="(color, id, index) in currPalette">
 	    <a
         href=""
         class="gridCell"
-        :class="{ selectedCell: isSelected(index) }"
-        :id="index"
+        :class="{ selectedCell: isSelected(id) }"
+        :id="id"
         :style="{background: color}"
         @click.stop.prevent="setColor" >
       </a>
@@ -23,37 +23,37 @@
       return {
         palette: {
           warm: {
-            0: '#C71B20',
-            1: '#DA4120',
-            2: '#EB6A28',
-            3: '#FF9A2D',
-            4: '#FCBE2E',
-            5: '#FFE025',
-            6: '#D21B78',
-            7: '#EB1F84',
-            8: '#FF5D9F'
+            1: '#C71B20',
+            2: '#DA4120',
+            3: '#EB6A28',
+            4: '#FF9A2D',
+            5: '#FCBE2E',
+            6: '#FFE025',
+            7: '#D21B78',
+            8: '#EB1F84',
+            9: '#FF5D9F'
           },
           neutral: {
-            9: '#C5A0CF',
-            10: '#A0A8C9',
-            11: '#9ACCC2',
-            12: '#B0D4A2',
-            13: '#E3DAAB',
-            14: '#FADAA1',
-            15: '#ECA7B6',
-            16: '#E5B1A9',
-            17: '#F7CDA3'
+            10: '#C5A0CF',
+            11: '#A0A8C9',
+            12: '#9ACCC2',
+            13: '#B0D4A2',
+            14: '#E3DAAB',
+            15: '#FADAA1',
+            16: '#ECA7B6',
+            17: '#E5B1A9',
+            18: '#F7CDA3'
           },
           cool: {
-            18: '#C130E3',
-            19: '#8034DE',
-            20: '#3A39ED',
-            21: '#3D8AFF',
-            22: '#33C4EF',
-            23: '#32E3BE',
-            24: '#289C18',
-            25: '#1FBF43',
-            26: '#25D980'
+            19: '#C130E3',
+            20: '#8034DE',
+            21: '#3A39ED',
+            22: '#3D8AFF',
+            23: '#33C4EF',
+            24: '#32E3BE',
+            25: '#289C18',
+            26: '#1FBF43',
+            27: '#25D980'
           }
         },
         currSelected: ''
