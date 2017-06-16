@@ -5,13 +5,13 @@
       <input
         class="change-greeting-input"
         type="text"
-        placeholder="the world is your oyster"
+        placeholder="the world is my oyster"
         v-model="greeting"/>
 
       <button class="change-greeting-submit" @click.prevent="updateGreeting()">
         do it
       </button>
-    </form>
+     </form>
   </div>
 </template>
 
@@ -49,13 +49,19 @@ export default {
 
 <style scoped>
   .container {
+    display: inline-block;
+    border: 1px solid gray;
     padding: 2rem;
-    background: #fff8ea;
+    background: #a0a8c9;
   }
 
   h2 {
     font-weight: bold;
     margin-bottom: 1rem;
+  }
+
+  form {
+    display: block;
   }
 
   .change-greeting-input {

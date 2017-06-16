@@ -3,7 +3,7 @@
     <h2>change password</h2>
     <form class="form">
       <div class="fieldset">
-        <label class="change-password" for="old-password">old password</label>
+        <label class="change-password" for="old-password">old</label>
         <input
           class="change-password-input"
           type="password"
@@ -12,7 +12,7 @@
       </div>
   
       <div class="fieldset">
-        <label class="change-password" for="new-password">new password</label>
+        <label class="change-password" for="new-password">new</label>
         <input
           class="change-password-input"
           id="new-password"
@@ -67,8 +67,10 @@
 
 <style scoped>
   .container {
+    display: inline-block;
+    border: 1px solid gray;
     padding: 2rem;
-    background: #fff8ea;
+    background: #b0d4a2
   }
 
   h2 {

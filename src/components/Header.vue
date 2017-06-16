@@ -10,7 +10,6 @@
       <template v-if="isAuthenticated">
         <a href="" @click.stop.prevent="goToSettings()">settings</a>
         <a href="" @click.stop.prevent="logOut()">log out</a>
-        <app-settings class="settings-modal"></app-settings>
       </template> 
       <template v-if="!isAuthenticated">
         <app-sign-up class="sign-up-modal"></app-sign-up>
@@ -25,13 +24,11 @@
 <script>
   import LogIn from './LogIn'
   import SignUp from './SignUp'
-  import Settings from './Settings'
 
   export default {
     components: {
       appLogIn: LogIn,
-      appSignUp: SignUp,
-      appSettings: Settings
+      appSignUp: SignUp
     },
     computed: {
       isAuthenticated () {
@@ -87,8 +84,7 @@
   }
 
   .sign-up-modal,
-  .log-in-modal,
-  .settings-modal {
+  .log-in-modal {
     display: none;
     margin: auto;
   }

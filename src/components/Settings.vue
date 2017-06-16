@@ -1,16 +1,31 @@
 <template>
   <div class="container">
-    <a class="view-history-link" href="" @click.prevent="goToMoodHistory()">view mood history</a>
-    <app-change-password class="app-change-password"></app-change-password>
-    <a class="clear-history-link" href="" @click.stop.prevent="clearHistory()">clear mood history</a>
-    <app-change-greeting class="app-change-greeting"></app-change-greeting>
+    <div class="history">
+      <a class="view-history-link"
+        href=""
+        @click.prevent="goToMoodHistory()">
+        view timeline
+      </a>
+
+      <button class="clear-history-button"
+        @click.stop.prevent="clearHistory()">
+        clear history
+      </button>
+    </div>
+
+    <div>
+      <app-change-password class="app-change-password"></app-change-password>
+    </div>
+
+    <div>
+      <app-change-greeting class="app-change-greeting"></app-change-greeting>
+    </div>
   </div>
 </template>
 
 <script>
   import ChangePassword from './ChangePassword'
   import ChangeGreeting from './ChangeGreeting'
-  // import store from '../main.js'
 
   export default {
     name: 'Settings',
@@ -18,33 +33,36 @@
       appChangePassword: ChangePassword,
       appChangeGreeting: ChangeGreeting
     },
+
     data: function () {
       return {
         old: '',
         password: ''
       }
     },
+
     methods: {
       goToMoodHistory: function () {
         this.$router.push({ name: 'viewHistory' })
       },
-      apiCall: function () {
+
+      clearHistory: function () {
         var token = this.$store.state.user.authToken
-        return $.ajax({
+        var vm = this
+
+        $.ajax({
           url: 'http://localhost:4741/moods',
           type: 'DELETE',
           headers: {
             Authorization: 'Token token=' + token
+          },
+          success: function () {
+            vm.$toaster.success('history cleared')
+          },
+          error: function () {
+            vm.$toaster.error("history couldn't be cleared")
           }
         })
-      },
-      clearHistory: function () {
-        this.apiCall()
-          .then(console.log('moods deleted successfully'))
-          .catch(function (error) {
-            console.error(error)
-            console.log('at error catch for clear history')
-          })
       }
     }
   }
@@ -52,20 +70,41 @@
 
 <style scoped>
   .container {
+    display: flex;
     text-align: center;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 4rem;
+  }
+
+  .container div {
+    margin: 0 1rem;
+  }
+
+  .history {
+    border: 1px solid gray;
+    padding: 2rem;
+    background: #fadaa1;
   }
 
   .view-history-link,
-  .clear-history-link {
+  .clear-history-button {
     display: block;
+    margin: auto;
   }
 
-  .app-change-password {
-    margin-top: 2rem;
-  }
-  
-  .app-change-greeting {
-    margin-top: 2rem;
+  .view-history-link {
+    color: #000;
+    font-weight: bold;
   }
 
+  .view-history-link:hover,
+  .view-history-link:focus,
+  .view-history-link:active {
+    opacity: .5;
+  }
+
+  .clear-history-button {
+    margin-top: 2rem;
+  }
 </style>
