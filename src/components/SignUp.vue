@@ -58,26 +58,28 @@
       }
     },
     methods: {
-      apiCall: function () {
+      signUp: function () {
         var data = {
           email: this.email,
           password: this.password,
           passwordAgain: this.passwordAgain
         }
 
-        return $.ajax({
+        var vm = this
+
+        $.ajax({
           url: 'http://localhost:4741/sign-up',
           method: 'POST',
-          data
+          data,
+          success: function () {
+            vm.closeModal()
+          },
+          error: function () {
+            vm.$toaster.error('sign up invalid - try again')
+          }
         })
       },
-      signUp: function () {
-        this.apiCall()
-          .then(this.closeModal())
-          .catch(function (error) {
-            console.log('error! it is', error)
-          })
-      },
+
       closeModal: function () {
         $('.modal').css('display', 'none')
       }
@@ -94,25 +96,17 @@
   }
 
   .modal-content {
-    margin: 15% auto;
+    margin: 2rem auto;
     background: #fff8ea;
     padding: 20px;
-/*    border: 1px solid #888;*/
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
+    box-shadow: 2px 6px 10px 0 rgba(0,0,0,0.2);
     animation-name: animatetop;
-    animation-duration: 0.4s
-  }
-
-  @-webkit-keyframes animatetop {
-    from {top: -300px; opacity: 0} 
-    to {top: 0; opacity: 1}
+    animation-duration: 0.2s
   }
 
   @keyframes animatetop {
-      from {top: -300px; opacity: 0}
-      to {top: 0; opacity: 1}
+    from { top: -300px; opacity: 0 }
+    to { top: 0; opacity: 1 }
   }
 
   .fieldset + .fieldset {
@@ -141,6 +135,8 @@
   .close {
     color: #aaa;
     float: right;
+    margin-top: -12px;
+    margin-right: -12px;
     font-size: 28px;
     font-weight: bold;
   }
