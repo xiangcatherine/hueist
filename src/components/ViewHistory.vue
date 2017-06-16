@@ -38,7 +38,7 @@
       var vm = this
 
       $.ajax({
-        url: 'http://localhost:4741/moods',
+        url: 'https://hueist-backend.herokuapp.com/moods',
         method: 'GET',
         headers: {
           Authorization: 'Token token=' + this.$store.state.user.authToken

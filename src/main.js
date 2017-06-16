@@ -57,7 +57,7 @@ const store = new Vuex.Store({
     logIn: function (context, userInput) {
       return new Promise((resolve, reject) => {
         $.ajax({
-          url: 'http://localhost:4741/sign-in',
+          url: 'https://hueist-backend.herokuapp.com/sign-in',
           type: 'POST',
           data: {
             email: userInput.email,
@@ -77,7 +77,7 @@ const store = new Vuex.Store({
     updateGreeting: function (context, userInput) {
       return new Promise((resolve, reject) => {
         $.ajax({
-          url: 'http://localhost:4741/users/' + context.state.user.id + '/change-greeting',
+          url: 'https://hueist-backend.herokuapp.com/users/' + context.state.user.id + '/change-greeting',
           type: 'PATCH',
           headers: {
             Authorization: 'Token token=' + context.state.user.authToken
@@ -101,7 +101,7 @@ const store = new Vuex.Store({
     changePassword: function (context, userInput) {
       return new Promise((resolve, reject) => {
         $.ajax({
-          url: ('http://localhost:4741/change-password/' + context.state.user.id),
+          url: ('https://hueist-backend.herokuapp.com/change-password/' + context.state.user.id),
           type: 'PATCH',
           data: {
             passwords: {
@@ -124,7 +124,7 @@ const store = new Vuex.Store({
 
     logOut: function (context) {
       $.ajax({
-        url: ('http://localhost:4741/sign-out/' + context.state.user.id),
+        url: ('https://hueist-backend.herokuapp.com/sign-out/' + context.state.user.id),
         type: 'DELETE',
         headers: {
           Authorization: 'Token token=' + context.state.user.authToken

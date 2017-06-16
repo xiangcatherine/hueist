@@ -68,7 +68,7 @@
         var vm = this
 
         $.ajax({
-          url: 'http://localhost:4741/sign-up',
+          url: 'https://hueist-backend.herokuapp.com/sign-up',
           method: 'POST',
           data,
           success: function () {
