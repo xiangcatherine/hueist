@@ -97,11 +97,12 @@
 
   .modal-content {
     margin: 2rem auto;
-    background: #fff8ea;
     padding: 20px;
-    box-shadow: 2px 6px 10px 0 rgba(0,0,0,0.2);
+    border: 1px solid gray;
+    background: #fff;
+    box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.2);
     animation-name: animatetop;
-    animation-duration: 0.2s
+    animation-duration: 0.2s;
   }
 
   @keyframes animatetop {
@@ -120,9 +121,10 @@
 
   .sign-up-input {
     padding: .5rem;
-    border: 1px solid transparent;
+    border: 1px solid gray;
   }
 
+  .sign-up-input:hover,
   .sign-up-input:focus {
     outline: 0;
     border-color: black;

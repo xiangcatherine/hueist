@@ -88,9 +88,10 @@
 
   .modal-content {
     margin: 15% auto;
-    background: #fff8ea;
+    border: 1px solid gray;
     padding: 20px;
-    box-shadow: 2px 6px 10px 0 rgba(0,0,0,0.2);
+    background: #fff;
+    box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.2);
     animation-name: animatetop;
     animation-duration: 0.4s
   }
@@ -112,13 +113,15 @@
   #signin-email,
   #signin-password {
     padding: .5rem;
-    border: 1px solid transparent;
+    border: 1px solid gray;
   }
 
+  #signin-email:hover,
+  #signin-password:hover,
   #signin-email:focus,
-  #signin-password:focus{
+  #signin-password:focus {
     outline: 0;
-    border-color: black !important;
+    border-color: black;
   }
 
   .close {

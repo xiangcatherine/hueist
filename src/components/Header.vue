@@ -8,8 +8,8 @@
 
     <div class="right">
       <template v-if="isAuthenticated">
-        <a href="" @click.stop.prevent="goToSettings()">settings</a>
-        <a href="" @click.stop.prevent="logOut()">log out</a>
+        <a href="" @click.stop.prevent="goToSettings()" class="settings-link">settings</a>
+        <a href="" @click.stop.prevent="logOut()" class="log-out-link">log out</a>
       </template> 
       <template v-if="!isAuthenticated">
         <app-sign-up class="sign-up-modal"></app-sign-up>
@@ -77,23 +77,23 @@
     padding: 1.7rem;
   }
 
-  a:hover,
-  a:focus,
-  a:active {
-    background: #fff8ea;
+  .logo:hover {
+    background: #fadaa1;
+  }
+
+  .sign-up-link:hover,
+  .settings-link:hover {
+    background: #b0d4a2;
+  }
+
+  .log-in-link:hover,
+  .log-out-link:hover {
+    background: #a0a8c9;
   }
 
   .sign-up-modal,
   .log-in-modal {
     display: none;
     margin: auto;
-  }
-
-  .log-in-link:hover {
-    background: #C8C8A9;
-  }
-
-  .sign-up-link:hover {
-    background: #83AF9B;
   }
 </style>
