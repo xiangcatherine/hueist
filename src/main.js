@@ -4,9 +4,12 @@ import VueRouter from 'vue-router'
 import App from './App'
 import router from './router'
 
+import Toaster from 'v-toaster'
+
 Vue.config.productionTip = false
 Vue.use(Vuex)
 Vue.use(VueRouter)
+Vue.use(Toaster, {timeout: 2000})
 
 const store = new Vuex.Store({
   state: {
@@ -17,6 +20,7 @@ const store = new Vuex.Store({
       greeting: ''
     }
   },
+
   getters: {
     isAuthenticated (state) {
       return state.user.authToken !== ''
@@ -34,6 +38,7 @@ const store = new Vuex.Store({
       return state.user.greeting
     }
   },
+
   mutations: {
     addWebToken: function (state, data) {
       state.user.authToken = data.user.token
@@ -45,9 +50,9 @@ const store = new Vuex.Store({
     },
     changeMessage: function (state, data) {
       state.user.greeting = data.user.greeting
-      console.log('what is data', data)
     }
   },
+
   actions: {
     logIn: function (context, userInput) {
       return new Promise((resolve, reject) => {
@@ -68,6 +73,7 @@ const store = new Vuex.Store({
         })
       })
     },
+
     updateGreeting: function (context, userInput) {
       return new Promise((resolve, reject) => {
         $.ajax({
@@ -83,38 +89,39 @@ const store = new Vuex.Store({
           },
           success: function (data) {
             context.commit('changeMessage', data)
-            console.log(data)
             resolve(data)
           },
           error: function (reason) {
             reject(reason)
-            console.log(reason)
           }
         })
       })
     },
+
     changePassword: function (context, userInput) {
-      console.log(userInput)
-      $.ajax({
-        url: ('http://localhost:4741/change-password/' + context.state.user.id),
-        type: 'PATCH',
-        data: {
-          passwords: {
-            old: userInput.old,
-            new: userInput.new
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          url: ('http://localhost:4741/change-password/' + context.state.user.id),
+          type: 'PATCH',
+          data: {
+            passwords: {
+              old: userInput.old,
+              new: userInput.new
+            }
+          },
+          headers: {
+            Authorization: 'Token token=' + context.state.user.authToken
+          },
+          success: function (data) {
+            resolve(data)
+          },
+          error: function (reason) {
+            reject(reason)
           }
-        },
-        headers: {
-          Authorization: 'Token token=' + context.state.user.authToken
-        },
-        success: function (data) {
-          console.log('change pw successful')
-        },
-        error: function (error) {
-          console.error(error)
-        }
+        })
       })
     },
+
     logOut: function (context) {
       $.ajax({
         url: ('http://localhost:4741/sign-out/' + context.state.user.id),
@@ -123,11 +130,10 @@ const store = new Vuex.Store({
           Authorization: 'Token token=' + context.state.user.authToken
         },
         success: function () {
-          console.log('log out successful')
           context.commit('removeWebToken')
         },
-        error: function (error) {
-          console.error(error)
+        error: function () {
+          context.commit('removeWebToken')
         }
       })
     }

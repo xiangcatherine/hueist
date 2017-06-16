@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2>Change Password</h2>
+    <h2>change password</h2>
     <form class="form">
       <div class="fieldset">
         <label class="change-password" for="old-password">old password</label>
@@ -22,7 +22,7 @@
       </div>
   
       <div class="fieldset">
-        <button @click.prevent="changePassword()">change password</button>
+        <button @click.prevent="changePassword()">do it</button>
       </div>
     </form>
   
@@ -44,7 +44,22 @@
         $('.modal').css('display', 'none')
       },
       changePassword: function () {
-        this.$store.dispatch('changePassword', {old: this.old, new: this.password})
+        var vm = this
+
+        vm.$store
+          .dispatch(
+            'changePassword', {old: this.old, new: this.password}
+          )
+          .then(
+            function () {
+              vm.$toaster.success('password updated')
+            }
+          )
+          .catch(
+            function () {
+              vm.$toaster.error("password couldn't be updated")
+            }
+          )
       }
     }
   }
@@ -52,14 +67,15 @@
 
 <style scoped>
   .container {
-    display: inline-block;
     padding: 2rem;
     background: #fff8ea;
   }
 
   h2 {
+    font-weight: bold;
     padding-bottom: .75rem;
   }
+
   .fieldset {
     margin-top: 1rem;
   }
@@ -77,6 +93,7 @@
     border: 1px solid gray;
   }
 
+  .change-password-input:hover,
   .change-password-input:focus {
     outline: 0;
     border-color: black;
