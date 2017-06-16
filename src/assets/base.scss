@@ -54,3 +54,52 @@ table {
   opacity: 0
 }
 
+.v-toaster {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1rem;
+  z-index: 10000;
+  padding: 0 1rem;
+}
+
+.v-toaster .v-toast{
+  transition: all .2s ease;
+  color: #fff;
+  display: block;
+  margin-top: .5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(69,77,93,1);
+}
+
+.v-toaster .v-toast.v-toast-enter,
+.v-toaster .v-toast.v-toast-leave-to {
+  -webkit-transform: translate(100%);
+  -ms-transform: translate(100%);
+  transform: translate(100%)
+}
+
+.v-toaster .v-toast.v-toast-success {
+  background: rgba(50,182,67,1);
+}
+
+.v-toaster .v-toast.v-toast-error {
+  background: rgba(232,86,0,1);
+}
+
+.v-toaster .v-toast.v-toast-warning {
+  background: rgba(255,183,0,1);
+}
+
+.v-toaster .v-toast.v-toast-info {
+  background: rgba(91,192,222,1);
+}
+
+.v-toaster .v-toast.v-toast-primary {
+  background: rgba(66,139,202,1);
+}
+
+.v-toaster .v-toast .v-toast-btn-clear {
+  display: none;
+}
