@@ -73,6 +73,7 @@
           data,
           success: function () {
             vm.closeModal()
+            vm.$toaster.success('all set')
           },
           error: function () {
             vm.$toaster.error('sign up invalid - try again')
