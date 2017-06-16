@@ -65,12 +65,11 @@ table {
 }
 
 .v-toaster .v-toast{
-  transition: all .2s ease;
-  color: #fff;
   display: block;
   margin-top: .5rem;
-  padding: 1rem 1.25rem;
-  background: rgba(69,77,93,1);
+  padding: .75rem 1.25rem;
+  color: #fff;
+  transition: all .2s ease;
 }
 
 .v-toaster .v-toast.v-toast-enter,
@@ -81,23 +80,23 @@ table {
 }
 
 .v-toaster .v-toast.v-toast-success {
-  background: rgba(50,182,67,1);
+  background: #1FBF43;
 }
 
 .v-toaster .v-toast.v-toast-error {
-  background: rgba(232,86,0,1);
+  background: #FF9A2D;
 }
 
 .v-toaster .v-toast.v-toast-warning {
-  background: rgba(255,183,0,1);
+  background: #FF9A2D;
 }
 
 .v-toaster .v-toast.v-toast-info {
-  background: rgba(91,192,222,1);
+  background: #8034DE;
 }
 
 .v-toaster .v-toast.v-toast-primary {
-  background: rgba(66,139,202,1);
+  background: #1FBF43;
 }
 
 .v-toaster .v-toast .v-toast-btn-clear {
@@ -108,6 +107,7 @@ button {
   border: 1px solid gray;
   border-radius: 4px;
   padding: .7rem 1rem .75rem 1rem;
+  font-size: 13px;
   background: #fff;
   cursor: pointer;
 }

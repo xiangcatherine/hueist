@@ -66,7 +66,7 @@
           )
           .catch(
             function () {
-              vm.$toaster.error('sign in failed - try again')
+              vm.$toaster.error('login failed - try again')
             }
           )
       },
