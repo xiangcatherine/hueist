@@ -50,8 +50,8 @@
         }
       )
       .catch(
-        function (error) {
-          console.error('could not get mood history', error)
+        function () {
+          vm.$toaster.error("couldn't load timeline")
         }
       )
     }
