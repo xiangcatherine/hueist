@@ -52,31 +52,32 @@
       toggleGrid: function (hueType) {
         this.hueType = hueType
       },
+
       chooseColor: function (chosenColorId) {
         this.chosenColorId = chosenColorId
       },
-      apiCall: function () {
+
+      createMood: function () {
         var data = {
-          mood: {
-            color_id: this.chosenColorId
-          }
+          mood: {color_id: this.chosenColorId}
         }
 
-        return $.ajax({
+        var vm = this
+
+        $.ajax({
           url: 'http://localhost:4741/moods',
           method: 'POST',
           headers: {
             Authorization: 'Token token=' + this.$store.state.user.authToken
           },
-          data
+          data,
+          success: function () {
+            vm.$toaster.success('nice')
+          },
+          error: function () {
+            vm.$toaster.error("couldn't save mood - try again")
+          }
         })
-      },
-      createMood: function () {
-        this.apiCall()
-          .then(console.log('mood created successfully'))
-          .catch(function (error) {
-            console.log('create mood error! it is', error)
-          })
       }
     }
   }
