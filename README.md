@@ -11,7 +11,7 @@
 ![Hueist](http://i.imgur.com/GFlHvlE.jpg)
 
 # Technologies used:
-> HTML, CSS, JavaScript, Vuejs
+> HTML, CSS, JavaScript, and Vuejs (Ruby on Rails for back-end)
 
 ## Build Setup
 
