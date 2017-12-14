@@ -2,6 +2,12 @@
 
 > Track your mood, in full color
 
+## Demo Credentials
+
+**username:** demo@demo.com
+
+**password:** demo
+
 # Links
 * [Deployed client-side app](https://hueist.herokuapp.com)
 * [Back-end repo](https://github.com/xiangcatherine/hueist-backend)
